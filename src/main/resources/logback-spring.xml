@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+  <appender name="consoleLogger" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <pattern>
+        %d - %msg%n
+      </pattern>
+    </layout>
+  </appender>
+
+  <appender name="fileLogInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>D:\workspace\springboot-test\log\SpringBootWXSell\info.log</file>
+    <append>true</append>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>D:\workspace\springboot-test\log\SpringBootWXSell\info.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>7</maxHistory>
+      <totalSizeCap>1GB</totalSizeCap>
+    </rollingPolicy>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>INFO</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="fileLogError" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>D:\workspace\springboot-test\log\SpringBootWXSell\error.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>D:\workspace\springboot-test\log\SpringBootWXSell\error.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>7</maxHistory>
+      <totalSizeCap>1GB</totalSizeCap>
+    </rollingPolicy>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>%d %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+
+  <root level="info">
+    <appender-ref ref="consoleLogger" />
+    <appender-ref ref="fileLogInfo" />
+    <appender-ref ref="fileLogError" />
+  </root>
+</configuration>
