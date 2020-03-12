@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -15,13 +16,16 @@ public class ProductInfo {
     private String productName;
 
     // 商品单价
-    private Float productPrice;
+    private BigDecimal productPrice;
 
     // 商品库存数
     private Integer productStock;
 
     // 商品图片
     private String productIcon;
+
+    // 商品上下架 0：下架，1：上架
+    private Integer productStatus;
 
     // 商品描述
     private String productDescription;
@@ -32,12 +36,13 @@ public class ProductInfo {
     public ProductInfo() {
     }
 
-    public ProductInfo(String productId, String productName, Float productPrice, Integer productStock, String productIcon, Integer categoryType) {
+    public ProductInfo(String productId, String productName, BigDecimal productPrice, Integer productStock, String productIcon, Integer productStatus, String productDescription) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productStock = productStock;
         this.productIcon = productIcon;
-        this.categoryType = categoryType;
+        this.productStatus = productStatus;
+        this.productDescription = productDescription;
     }
 }

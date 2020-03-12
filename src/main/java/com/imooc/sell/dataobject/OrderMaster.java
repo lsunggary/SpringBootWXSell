@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 /*
  订单
@@ -28,7 +29,7 @@ public class OrderMaster {
     private String buyerOpenid;
 
     // 订单总金额
-    private Float orderAmount;
+    private BigDecimal orderAmount;
 
     // 订单状态 默认0，新下单
     private Integer orderStatus;
@@ -39,7 +40,7 @@ public class OrderMaster {
     public OrderMaster() {
     }
 
-    public OrderMaster(String orderId, String buyerName, String buyerPhone, String buyerAddress, String buyerOpenid, Float orderAmount, Integer orderStatus, Integer payStatus) {
+    public OrderMaster(String orderId, String buyerName, String buyerPhone, String buyerAddress, String buyerOpenid, BigDecimal orderAmount, Integer orderStatus, Integer payStatus) {
         this.orderId = orderId;
         this.buyerName = buyerName;
         this.buyerPhone = buyerPhone;

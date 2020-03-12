@@ -45,7 +45,6 @@
     </encoder>
   </appender>
 
-
   <root level="info">
     <appender-ref ref="consoleLogger" />
     <appender-ref ref="fileLogInfo" />
