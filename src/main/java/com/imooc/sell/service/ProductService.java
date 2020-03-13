@@ -1,5 +1,7 @@
 package com.imooc.sell.service;
 
+import com.imooc.sell.DTO.CartDTO;
+import com.imooc.sell.dataobject.OrderDetail;
 import com.imooc.sell.dataobject.ProductInfo;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
  **/
 public interface ProductService {
 
-    ProductInfo findOne(Integer id);
+    ProductInfo findOne(String id);
 
     List<ProductInfo> findAll();
 
@@ -24,4 +26,8 @@ public interface ProductService {
     List<ProductInfo> findByProductStatus(Integer status);
 
     ProductInfo saveProductInfo(ProductInfo productInfo);
+
+    void addStock(List<CartDTO> cartDTOList);
+
+    void decreaseStock(List<CartDTO> cartDTOList);
 }
