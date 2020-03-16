@@ -18,7 +18,10 @@ public class KeyUtil {
     public static String genUniqueKey() {
         Date date = new Date();
         long timelong = date.getTime();
-        timelong += (long)(Math.random() * 64)<<8;
+        /**
+         * (Math.random() * 64)<<8 最大为8192 最小为0
+         */
+        timelong = timelong * 1000 + (long)(Math.random() * 64)<<8;
         return timelong + "";
     }
 }

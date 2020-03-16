@@ -1,9 +1,18 @@
 package com.imooc.sell.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.sell.dataobject.OrderDetail;
+import com.imooc.sell.enums.OrderStatusEnum;
+import com.imooc.sell.enums.PayStatusEnum;
+import com.imooc.sell.utils.EnumUtil;
+import com.imooc.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +48,14 @@ public class OrderDTO {
     // 支付状态 默认0，未支付
     private Integer payStatus;
 
+    // 创建时间
+    @JsonSerialize(using = Date2LongSerializer.class)
+    private Date createTime;
+
+    // 更新时间
+    @JsonSerialize(using = Date2LongSerializer.class)
+    private Date updateTime;
+
     // 订单-商品详情列表
     private List<OrderDetail> orderDetailList;
 
@@ -55,5 +72,23 @@ public class OrderDTO {
         this.orderStatus = orderStatus;
         this.payStatus = payStatus;
         this.orderDetailList = orderDetailList;
+    }
+
+    private OrderStatusEnum orderStatusEnum;
+
+    private PayStatusEnum payStatusEnum;
+
+    /**
+     * @JsonIgnore 返回值忽略此方法
+     * @return
+     */
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum () {
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum () {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
     }
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /*
  订单
@@ -38,6 +39,10 @@ public class OrderMaster {
 
     // 支付状态 默认0，未支付，1,已支付
     private Integer payStatus = PayStatusEnum.NOT_PAID.getCode();
+
+    private Date createTime;
+
+    private Date updateTime;
 
     public OrderMaster() {
     }

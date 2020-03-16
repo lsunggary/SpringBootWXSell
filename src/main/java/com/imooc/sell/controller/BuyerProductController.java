@@ -1,13 +1,15 @@
 package com.imooc.sell.controller;
 
 import com.imooc.sell.VO.CategoryVO;
-import com.imooc.sell.VO.ProductResultListVO;
+import com.imooc.sell.VO.ProductListVO;
 import com.imooc.sell.VO.ProductVO;
+import com.imooc.sell.VO.ResultVO;
 import com.imooc.sell.dataobject.ProductCategory;
 import com.imooc.sell.dataobject.ProductInfo;
 import com.imooc.sell.enums.ProductStatusEnum;
 import com.imooc.sell.service.CategoryService;
 import com.imooc.sell.service.ProductService;
+import com.imooc.sell.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,9 +38,8 @@ public class BuyerProductController {
     CategoryService categoryService;
 
     @GetMapping("/list")
-    public ProductResultListVO getList() {
+    public ResultVO getList() {
         List<ProductInfo> productInfoList = productService.findByProductStatus(ProductStatusEnum.UP.getCode());
-        ProductResultListVO productResultListVO = new ProductResultListVO();
         /**
          * lambda
          */
@@ -67,9 +68,6 @@ public class BuyerProductController {
             categoryVOList.add(categoryVO);
         });
 
-        productResultListVO.setData(categoryVOList);
-        productResultListVO.setCode(200);
-        productResultListVO.setMsg("成功");
-        return productResultListVO;
+        return ResultVOUtil.success(categoryVOList);
     }
 }

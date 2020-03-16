@@ -6,3 +6,5 @@ spring:
     url: jdbc:mysql://106.13.230.143:3306/db_wx_order?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true
   jpa:
     show-sql: true
+  jackson:
+    default-property-inclusion: non_null

@@ -3,7 +3,7 @@ package com.imooc.sell.enums;
 import lombok.Getter;
 
 @Getter
-public enum OrderStatusEnum {
+public enum OrderStatusEnum implements BaseAbstractEnum {
     INI(0,"新建订单"),
     ACCEPT(1,"接受订单"),
     CANCEL(2,"取消订单")

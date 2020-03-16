@@ -20,11 +20,13 @@ public interface OrderService {
 
     OrderDTO findOne(String orderId);
 
-    Page<OrderDTO> findAll(String buyerOpenId, Pageable pageable);
+    Page<OrderDTO> findList(String buyerOpenId, Pageable pageable);
 
     OrderDTO cancel(OrderDTO orderDTO);
 
     OrderDTO finish(OrderDTO orderDTO);
 
     OrderDTO paid(OrderDTO orderDTO);
+
+    Page<OrderDTO> findList(Pageable pageable);
 }

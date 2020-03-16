@@ -13,7 +13,7 @@ import java.util.List;
  * @Version V_1.0
  **/
 @Data
-public class ProductResultListVO {
+public class ProductListVO {
 
     private Integer code;
 

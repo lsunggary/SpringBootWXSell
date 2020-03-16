@@ -11,6 +11,7 @@ package com.imooc.sell.exceptions;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,5 +37,11 @@ public class ExceptionHandle {
         result.put("code", e.getCode());
         result.put("message", e.getMessage());
         return result;
+    }
+
+    // 返回登录页面
+    @ExceptionHandler(SellAuthorizeException.class)
+    public ModelAndView sellAuthorizeErrorHandle(SellAuthorizeException e) {
+        return new ModelAndView("logout");
     }
 }

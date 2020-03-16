@@ -3,7 +3,7 @@ package com.imooc.sell.enums;
 import lombok.Getter;
 
 @Getter
-public enum PayStatusEnum {
+public enum PayStatusEnum implements BaseAbstractEnum {
     NOT_PAID(0,"未支付"),
     PAID(1,"已支付"),
     ;
